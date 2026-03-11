@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politie Wet: Rap Stappenplan</title>
+    <style>
+        :root {
+            --politie-blauw: #002244;
+            --politie-geel: #FFCC00;
+            --politie-wit: #FFFFFF;
+            --accent-blauw: #0055A4;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, var(--politie-blauw) 100%);
+            color: var(--politie-wit);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #app-container {
+            width: 90%;
+            max-width: 550px;
+            background: rgba(0, 34, 68, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-left: 8px solid var(--politie-geel);
+            border-radius: 4px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        /* De subtiele Fade-in animatie */
+        .step {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .step.active {
+            display: block;
+            opacity: 1;
+        }
+
+        h2 { 
+            color: var(--politie-geel); 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        p { 
+            line-height: 1.8; 
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .controls {
+            margin-top: 3rem;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid var(--politie-geel);
+            padding: 12px 25px;
+            color: var(--politie-geel);
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            flex: 1;
+        }
+
+        button:disabled {
+            border-color: #444;
+            color: #444;
+            cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+            background: var(--politie-geel);
+            color: var(--politie-blauw);
+        }
+
+        /* Audio speler styling */
+        audio {
+            width: 100%;
+            margin-top: 25px;
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.3);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+    <div class="badge">POLITIEWET ART. 3-53</div>
+
+    <div class="step active" id="step1">
+        <h2>01. De Juridische Rol</h2>
+        <p>Stel de AI in als een <strong>Ghostwriter</strong>. Geef opdracht om de wetsartikelen te vertalen naar een 'filmisch' verhaal met respect voor de rechtsregels.</p>
+    </div>
+
+    <div class="step" id="step2">
+        <h2>02. Flow & Handhaving</h2>
+        <p>Bepaal het tempo. Voor een rustige politievibe kies je <strong>90 BPM</strong>. Vraag om een strakke 4/4 maat zodat de regels 'staan'.</p>
+    </div>
+
+    <div class="step" id="step3">
+        <h2>03. Rijmschema</h2>
+        <p>Geen simpele rijmpjes. Vraag om <strong>assonantie</strong> en <strong>binnenrijm</strong>. Dit zorgt dat de juridische termen vloeiend in elkaar overgaan.</p>
+    </div>
+
+    <div class="step" id="step4">
+        <h2>04. De Audio Finale</h2>
+        <p>Voeg ad-libs toe die passen bij de taakuitvoering (Woe-woe! of 'Check it'). De tekst is nu klaar voor de beat.</p>
+    </div>
+
+    <div class="step" id="step5">
+        <h2>Gouden Troon</h2>
+        <p>Handhaving van de rechtsorde in audio-vorm. Luister naar de vertaling van de wet.</p>
+        <audio id="player" controls>
+            <source src="Gouden_Troon (1).mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn" onclick="changeStep(-1)" disabled>Vorige</button>
+        <button id="nextBtn" onclick="changeStep(1)">Volgende Stap</button>
+    </div>
+</div>
+
+<script>
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    function changeStep(n) {
+        const current = document.getElementById(`step${currentStep}`);
+        current.classList.remove('active');
+        
+        currentStep += n;
+        
+        const next = document.getElementById(`step${currentStep}`);
+        next.classList.add('active');
+
+        // Knop status
+        document.getElementById('prevBtn').disabled = (currentStep === 1);
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (currentStep === totalSteps) {
+            nextBtn.innerText = "Afgerond";
+            nextBtn.disabled = true;
+        } else {
+            nextBtn.innerText = "Volgende Stap";
+            nextBtn.disabled = false;
+        }
+    }
+</script>
+
+</body>
+</html>

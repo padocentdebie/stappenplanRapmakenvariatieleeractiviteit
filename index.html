@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politie Wet: Rap Stappenplan</title>
+    <title>Stappenplan: Van Leerstof naar Beat</title>
     <style>
         :root {
             --politie-blauw: #002244;
             --politie-geel: #FFCC00;
             --politie-wit: #FFFFFF;
-            --accent-blauw: #0055A4;
+            --waarschuwing-rood: #ff4444;
         }
 
         body {
@@ -19,23 +19,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
 
         #app-container {
             width: 90%;
-            max-width: 550px;
-            background: rgba(0, 34, 68, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
+            max-width: 600px;
+            background: rgba(0, 34, 68, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
             border-left: 8px solid var(--politie-geel);
             border-radius: 4px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
             position: relative;
         }
 
-        /* De subtiele Fade-in animatie */
         .step {
             display: none;
             opacity: 0;
@@ -53,18 +52,32 @@
             letter-spacing: 2px;
             border-bottom: 1px solid rgba(255, 204, 0, 0.3);
             padding-bottom: 10px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
-        p { 
-            line-height: 1.8; 
-            color: #e0e0e0;
-            font-size: 1.1rem;
-            font-weight: 300;
+        p { line-height: 1.7; color: #e0e0e0; font-size: 1.05rem; }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.95rem;
         }
+
+        .warning {
+            border: 1px solid var(--waarschuwing-rood);
+            color: #ffbaba;
+            padding: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        a { color: var(--politie-geel); text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
 
         .controls {
-            margin-top: 3rem;
+            margin-top: 2.5rem;
             display: flex;
             gap: 15px;
         }
@@ -72,7 +85,7 @@
         button {
             background: transparent;
             border: 2px solid var(--politie-geel);
-            padding: 12px 25px;
+            padding: 12px 20px;
             color: var(--politie-geel);
             font-weight: bold;
             text-transform: uppercase;
@@ -81,24 +94,10 @@
             flex: 1;
         }
 
-        button:disabled {
-            border-color: #444;
-            color: #444;
-            cursor: not-allowed;
-        }
+        button:disabled { border-color: #444; color: #444; cursor: not-allowed; }
+        button:hover:not(:disabled) { background: var(--politie-geel); color: var(--politie-blauw); }
 
-        button:hover:not(:disabled) {
-            background: var(--politie-geel);
-            color: var(--politie-blauw);
-        }
-
-        /* Audio speler styling */
-        audio {
-            width: 100%;
-            margin-top: 25px;
-            border-radius: 4px;
-            opacity: 0.8;
-        }
+        audio { width: 100%; margin-top: 20px; }
 
         .badge {
             position: absolute;
@@ -106,7 +105,6 @@
             right: 20px;
             font-size: 0.7rem;
             color: rgba(255,255,255,0.3);
-            font-weight: bold;
             letter-spacing: 1px;
         }
     </style>
@@ -114,34 +112,57 @@
 <body>
 
 <div id="app-container">
-    <div class="badge">POLITIEWET ART. 3-53</div>
+    <div class="badge">STUDIE-TOOL v2026</div>
 
     <div class="step active" id="step1">
-        <h2>01. De Juridische Rol</h2>
-        <p>Stel de AI in als een <strong>Ghostwriter</strong>. Geef opdracht om de wetsartikelen te vertalen naar een 'filmisch' verhaal met respect voor de rechtsregels.</p>
+        <h2>01. Het Doel</h2>
+        <p>Een nieuwe manier om studenten te helpen lange, taaie teksten in het hoofd te stampen: <strong>Zet de leerstof om in een lied.</strong></p>
+        <p>Door ritme en rijm te gebruiken, onthouden de hersenen complexe juridische artikelen of procedures vele malen sneller.</p>
     </div>
 
     <div class="step" id="step2">
-        <h2>02. Flow & Handhaving</h2>
-        <p>Bepaal het tempo. Voor een rustige politievibe kies je <strong>90 BPM</strong>. Vraag om een strakke 4/4 maat zodat de regels 'staan'.</p>
+        <h2>02. Materiaal & Privacy</h2>
+        <p>Gebruik een van de volgende AI's:</p>
+        <ul>
+            <li><a href="https://chatgpt.com" target="_blank">ChatGPT (OpenAI)</a></li>
+            <li><a href="https://claude.ai" target="_blank">Claude (Anthropic)</a></li>
+            <li><a href="https://gemini.google.com" target="_blank">Gemini (Google)</a></li>
+        </ul>
+        <div class="info-box warning">
+            <strong>LET OP:</strong> Gebruik bij het aanmaken van een account <u>geen</u> politiegegevens. Gebruik een nieuw privéaccount zonder relatie met de politieorganisatie.
+        </div>
     </div>
 
     <div class="step" id="step3">
-        <h2>03. Rijmschema</h2>
-        <p>Geen simpele rijmpjes. Vraag om <strong>assonantie</strong> en <strong>binnenrijm</strong>. Dit zorgt dat de juridische termen vloeiend in elkaar overgaan.</p>
+        <h2>03. De Eerste Prompt</h2>
+        <p>Plaats de tekst die op rap gezet moet worden in de chat en vraag om een rijmschema.</p>
+        <div class="info-box">
+            <strong>Waarschuwing:</strong> Gebruik alleen teksten die bedoeld zijn voor publicatie (zoals openbare wetsteksten). Plaats nooit vertrouwelijke info!
+        </div>
     </div>
 
     <div class="step" id="step4">
-        <h2>04. De Audio Finale</h2>
-        <p>Voeg ad-libs toe die passen bij de taakuitvoering (Woe-woe! of 'Check it'). De tekst is nu klaar voor de beat.</p>
+        <h2>04. Verfijn je Stijl</h2>
+        <p>Niet tevreden met de eerste versie? Verfijn de prompt naar eigen ideeën. Vraag bijvoorbeeld om:</p>
+        <ul>
+            <li>Een agressievere <strong>'Drill'</strong> flow voor korte krachtige artikelen.</li>
+            <li>Een meer melodische <strong>'Indie'</strong> of <strong>'Rock'</strong> vibe voor verhalende teksten.</li>
+        </ul>
     </div>
 
     <div class="step" id="step5">
-        <h2>Gouden Troon</h2>
-        <p>Handhaving van de rechtsorde in audio-vorm. Luister naar de vertaling van de wet.</p>
-        <audio id="player" controls>
+        <h2>05. Audio Genereren</h2>
+        <p>Geef de laatste opdracht om een audiobestand te genereren op basis van de tekst. </p>
+        <p>Zodra de AI de track heeft gemaakt, verschijnt de <strong>downloadknop</strong>. Sla het bestand op met een duidelijke naam (bijv. <em>Art3_Politiewet.mp3</em>).</p>
+        <audio controls>
             <source src="Gouden_Troon (1).mp3" type="audio/mpeg">
         </audio>
+    </div>
+
+    <div class="step" id="step6">
+        <h2>06. Delen & Leren</h2>
+        <p>Het gedownloade bestand is nu klaar voor gebruik. Verspreid de audio onder de studenten via het <strong>LeerManagementSysteem (It's Learning)</strong>.</p>
+        <p>Zo hebben studenten de wet letterlijk 'op hun oren' tijdens het reizen of sporten.</p>
     </div>
 
     <div class="controls">
@@ -152,23 +173,19 @@
 
 <script>
     let currentStep = 1;
-    const totalSteps = 5;
+    const totalSteps = 6;
 
     function changeStep(n) {
         const current = document.getElementById(`step${currentStep}`);
         current.classList.remove('active');
-        
         currentStep += n;
-        
         const next = document.getElementById(`step${currentStep}`);
         next.classList.add('active');
 
-        // Knop status
         document.getElementById('prevBtn').disabled = (currentStep === 1);
         const nextBtn = document.getElementById('nextBtn');
-        
         if (currentStep === totalSteps) {
-            nextBtn.innerText = "Afgerond";
+            nextBtn.innerText = "Klaar";
             nextBtn.disabled = true;
         } else {
             nextBtn.innerText = "Volgende Stap";
